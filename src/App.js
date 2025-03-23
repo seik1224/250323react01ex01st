@@ -17,23 +17,31 @@ function App() {
         Nintendo Score
       </h2>
       <div className="flex flex-row h-full px-20 justify-around items-center gap-10">
-        {
-          profile.map((v, i)=>
-          (
+      {profile.map((v, i) => {
+          profile.sort((a, b) => {
+            return b.score - a.score;
+          });
+          return (
             <div className="text-center text-white mx-10" key={i}>
               <img
                 className="rounded-3xl"
-                src={`${process.env.PUBLIC_URL + profile[i].src}`}
+                src={process.env.PUBLIC_URL + profile[i].src}
                 alt=""
               />
               <h1 className="text-[80px]">{profile[i].name}</h1>
-              <h4 className="text-[40px]">
+              <h4
+                className="text-[40px]"
+                onClick={() => {
+                  let copy = [...profile];
+                  copy[i].score = copy[i].score + 1;
+                  setProfile(copy);
+                }}
+              >
                 Score<span className="pl-4">{profile[i].score}</span>
               </h4>
             </div>
-          ))
-        }
-    
+          );
+        })}
       </div>
     </div>
   );
