@@ -11,7 +11,7 @@ function App() {
   return (
     <div
       className="w-full h-full flex flex-col bg-slate-400 bg-custom bg-cover"
-      style={{ background: `url('${process.env.PUBLIC_URL}/bg1.jpg')` }}
+      style={{ background: process.env.PUBLIC_URL + profile[0].bg }}
     >
       <h2 className="text-[100px] text-white text-center pt-10">
         Nintendo Score
